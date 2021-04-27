@@ -1,11 +1,16 @@
-<?php
-
+<?
+define('STOP_STATISTICS', true);
+require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');
+$GLOBALS['APPLICATION']->RestartBuffer();
+?>
+<?
     $result = 'success';
 
     $name = $_POST["name"] ? $_POST["name"] : '';
     $phone = $_POST["phone"] ? $_POST["phone"] : '';
     $time = $_POST["time"] ? $_POST["time"] : '';
     $checkbox = $_POST["checkbox"] ? $_POST["checkbox"] : '';
+    $test = $_POST["test"] ? $_POST["test"] : '';
 
     if($name === ''){
         $result = 'Ошибка! Не заполнено обязательное поле "Ваше имя"!';
@@ -16,11 +21,12 @@
     if($checkbox === ''){
         $result = 'Ошибка! Пометьте галочкой согласие на обработку персональных данных!';
     }
+    if($test !== ''){
+        echo "success";
+        die;
+    }
 
-    if($result !== "success"){
-      setcookie("errors", $result, time()+5, "/");
-      header("Location: ".$_SERVER["HTTP_REFERER"]);
-    }else{
+    if($result == "success"){
         require_once ($_SERVER['DOCUMENT_ROOT'].'/include/phpmailer/PHPMailerAutoload.php');
 
         $output = "Имя пользователя: " . $name . "\n";
@@ -31,23 +37,26 @@
         $mail = new PHPMailer;
 
         $mail->CharSet = 'UTF-8';
-        $mail->From      = 'info@arbodek.brevis.pro';
+        $rsSites = CSite::GetByID(SITE_ID);
+        $arSite = $rsSites->Fetch();
+        $mail->From      = $arSite['EMAIL'];
         $mail->FromName  = 'test';
         $mail->Subject   = 'Сообщение с формы обратной связи';
         $mail->Body      = $output;
 
-        $mail->AddAddress( 'lol.testmail.kek@mail.ru' );
+        // $admin = CUser::GetByID(1);
+        // $admin = $admin->Fetch();
+        $strEmail = COption::GetOptionString('main','all_bcc');
+        $arEmail = explode(',', $strEmail);
+        foreach ($arEmail as $email) {
+          $mail->AddAddress($email);
+        }
 
         // отправляем письмо
         if ($mail->Send()) {
-            $value = "Спасибо! Наш менеджер скоро с Вами свяжется!";
-            setcookie("send", $value, time()+5, "/");
-            setcookie("errors", "", time());
-            header("Location: ".$_SERVER["HTTP_REFERER"]);
+            echo "success";
         } else {
-            $value = "<h3>Произошел как-то сбой! Попробуйте еще раз!</h3>";
-            setcookie("errors", $value, time()+5, "/");
-            header("Location: ".$_SERVER["HTTP_REFERER"]);
+            echo "Произошла неизвестная ошибка! Попробуйте позже!";
         }
     }
 

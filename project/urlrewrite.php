@@ -8,7 +8,7 @@ $arUrlRewrite=array (
     'PATH' => '/oblasti-primeneniya/index.php',
     'SORT' => 100,
   ),
-  10 => 
+  14 => 
   array (
     'CONDITION' => '#^/nashi-uslugi/#',
     'RULE' => '',
@@ -40,7 +40,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/index.php',
     'SORT' => 100,
   ),
-  2 => 
+  13 => 
   array (
     'CONDITION' => '#^/news/#',
     'RULE' => '',

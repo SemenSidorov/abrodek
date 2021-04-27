@@ -18,5 +18,5 @@
 
 </div>
 <div class="oll-link">
-    <a href="#">Смотреть все</a>
+    <a class="open_blocks">Смотреть все</a>
 </div>

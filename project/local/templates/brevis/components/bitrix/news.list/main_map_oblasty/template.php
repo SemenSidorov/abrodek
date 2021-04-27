@@ -1,7 +1,7 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <section>
     <div class="container">
-        <div class="title title-next title-map">Наши <span>готовые проекты</span></div>
+        <div class="title title-next title-map">Реализованные <span>проекты</span></div>
     <div class="partners-map" id="partners-map">
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=34601e3e-1295-4462-9627-0abd89b79058" type="text/javascript"></script>
 </div>

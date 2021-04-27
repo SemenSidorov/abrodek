@@ -22,13 +22,6 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Виды несущих конструкций", 
-		"/catalog/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
 		"Наши услуги", 
 		"/nashi-uslugi/", 
 		Array(), 
@@ -36,8 +29,15 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Новости/события", 
-		"/prays-list/", 
+		"Реализованные проекты", 
+		"/realizovannye-proekty/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Новости", 
+		"/news/", 
 		Array(), 
 		Array(), 
 		"" 
@@ -45,13 +45,6 @@ $aMenuLinks = Array(
 	Array(
 		"Контакты", 
 		"/contacts/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Реализованные проекты", 
-		"/realizovannye-proekty/", 
 		Array(), 
 		Array(), 
 		"" 

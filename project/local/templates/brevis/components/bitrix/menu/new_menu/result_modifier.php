@@ -268,12 +268,6 @@ if(CModule::IncludeModule("iblock")){
 				$arResult["ALL_ITEMS"][$key]["CHILDREN"][] = ["TEXT" => $el["NAME"], "LINK" => $el["DETAIL_PAGE_URL"]];
 			}
 		}
-		if($item["LINK"] == '/catalog/'){
-			$elements = CIBlockElement::GetList(array(), array("IBLOCK_ID" => 7, "SECTION_ID" => false), false, false, array());
-			while ($el = $elements->GetNext()) {
-				$arResult["ALL_ITEMS"][$key]["CHILDREN"][] = ["TEXT" => $el["NAME"], "LINK" => $el["DETAIL_PAGE_URL"]];
-			}
-		}
 		if($item["LINK"] == '/nashi-uslugi/'){
 			$elements = CIBlockElement::GetList(array(), array("IBLOCK_ID" => 12, "SECTION_ID" => false), false, false, array());
 			while ($el = $elements->GetNext()) {

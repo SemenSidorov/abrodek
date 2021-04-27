@@ -24,6 +24,13 @@ if (isset($templateData['TEMPLATE_THEME']))
 $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 ?>
+<script>
+	function show_all(){
+		$('.bx-filter-parameters-box-title').each(function(index, el){
+			smartFilter.hideFilterProps(el);
+		});
+	}
+</script>
 <div class="bx-filter  <?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL") echo "bx-filter-horizontal"?>">
 	<div class="bx-filter-section container-fluid">
 		<form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
@@ -59,9 +66,9 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 							$prices[$step_num] = number_format($arItem["VALUES"]["MAX"]["VALUE"], $precision, ".", "");
 						}
 						?>
-						<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-6<?endif?> bx-filter-parameters-box bx-active">
+				<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-6<?endif?> bx-filter-parameters-box <?//<?//bx-active?>?>">
 							<span class="bx-filter-container-modef"></span>
-							<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)"><span><?=$arItem["NAME"]?> <i data-role="prop_angle" class="fa fa-angle-<?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>up<?else:?>down<?endif?>"></i></span></div>
+							<div class="bx-filter-parameters-box-title" onclick="show_all()"><span><?=$arItem["NAME"]?> <i data-role="prop_angle" class="fa fa-angle-<?if ($arItem["DISPLAY_EXPANDED"]== "Y"):?>up<?else:?>down<?endif?>"></i></span></div>
 							<div class="bx-filter-block" data-role="bx_filter_block">
 								<div class="row bx-filter-parameters-box-container">
 									<div class="col-xs-6 bx-filter-parameters-box-container-block bx-left">
@@ -156,9 +163,9 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 					)
 						continue;
 					?>
-					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-6<?endif?> bx-filter-parameters-box bx-active">
+					<div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-6 col-md-4<?else:?>col-lg-6<?endif?> bx-filter-parameters-box <?//bx-active?>">
 						<span class="bx-filter-container-modef"></span>
-						<div class="bx-filter-parameters-box-title" onclick="smartFilter.hideFilterProps(this)">
+						<div class="bx-filter-parameters-box-title" onclick="show_all()">
 							<span class="bx-filter-parameters-box-hint"><?=$arItem["NAME"]?>
 								<?if ($arItem["FILTER_HINT"] <> ""):?>
 									<i id="item_title_hint_<?echo $arItem["ID"]?>" class="fa fa-question-circle"></i>
@@ -316,11 +323,11 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 											<?
 											$class = "";
 											if ($ar["CHECKED"])
-												$class.= " bx-active";
+												$class.= " <?//bx-active?>";
 											if ($ar["DISABLED"])
 												$class.= " disabled";
 											?>
-											<label for="<?=$ar["CONTROL_ID"]?>" data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label <?=$class?>" onclick="smartFilter.keyup(BX('<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')); BX.toggleClass(this, 'bx-active');">
+											<label for="<?=$ar["CONTROL_ID"]?>" data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label <?=$class?>" onclick="smartFilter.keyup(BX('<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')); BX.toggleClass(this, '<?//bx-active?>');">
 												<span class="bx-filter-param-btn bx-color-sl">
 													<?if (isset($ar["FILE"]) && !empty($ar["FILE"]["SRC"])):?>
 													<span class="bx-filter-btn-color-icon" style="background-image:url('<?=$ar["FILE"]["SRC"]?>');"></span>
@@ -348,11 +355,11 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 											<?
 											$class = "";
 											if ($ar["CHECKED"])
-												$class.= " bx-active";
+												$class.= " <?//bx-active?>";
 											if ($ar["DISABLED"])
 												$class.= " disabled";
 											?>
-											<label for="<?=$ar["CONTROL_ID"]?>" data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label<?=$class?>" onclick="smartFilter.keyup(BX('<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')); BX.toggleClass(this, 'bx-active');">
+											<label for="<?=$ar["CONTROL_ID"]?>" data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label<?=$class?>" onclick="smartFilter.keyup(BX('<?=CUtil::JSEscape($ar["CONTROL_ID"])?>')); BX.toggleClass(this, '<?//bx-active?>');">
 												<span class="bx-filter-param-btn bx-color-sl">
 													<?if (isset($ar["FILE"]) && !empty($ar["FILE"]["SRC"])):?>
 														<span class="bx-filter-btn-color-icon" style="background-image:url('<?=$ar["FILE"]["SRC"]?>');"></span>

@@ -1,10 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 IncludeTemplateLangFile(__FILE__);
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 <head>
-
+	<meta name="author" content="Интернет-маркетинговое агентство BREVIS | www.brevis-site.ru" />
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +24,9 @@ IncludeTemplateLangFile(__FILE__);
     <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/jquery.fancybox.min.css", true);?>
     <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/style.css", true);?>
     <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/media.css", true);?>
+    <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/slick.css", true);?>
+    <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/slick-theme.css", true);?>
+    <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/swiper-bundle.min.css", true);?>
 
     <!-- Scripts -->
     <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery-3.2.1.min.js');?>
@@ -33,6 +35,11 @@ IncludeTemplateLangFile(__FILE__);
     <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.fancybox.min.js');?>
     <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery-ui.min.js');?>
     <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/main.js');?>
+    <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/slick.min.js');?>
+    <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/swiper-bundle.min.js');?>
+    <?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/jquery.maskedinput.min.js');?>
+
+
 </head>
 <body>
 <?$APPLICATION->ShowPanel()?>
@@ -47,12 +54,12 @@ IncludeTemplateLangFile(__FILE__);
                 <span>Большепролетные конструкции<br /> из клееной древесины,<br /> Проектирование, Производство, Монтаж</span>
             </div>
             <div class="header-info col">
-                <div class="location">г. Москва, ул. Московская, д. 1, оф. 1</div>
+				<div class="location">г. Москва, ул. 2-я Институтская, д.6, с.1, оф. 501</div>
                 <div class="data row">
-                    <div class="time col">пн-пт с 9-18</div>
-                    <div class="mail col"><a href="mailto:info@mail.ru">info@mail.ru</a></div>
+					<div class="time col">Пн-Пт: с 10 до 18</div>
+                    <div class="mail col"><a href="mailto:info@arbodek.ru">info@arbodek.ru</a></div>
                 </div>
-                <div class="header-phone"><a href="tel:+74950000000">+7 (495) 000-00-00</a></div>
+                <div class="header-phone"><a href="tel:+74951774567">+7 (495) 177-45-67</a></div>
             </div>
             <div class="header-soc col">
                 <ul class="soc-list">
@@ -83,8 +90,9 @@ IncludeTemplateLangFile(__FILE__);
         		"USE_EXT" => "Y"
         	)
         );?>
-        <?if($APPLICATION->GetCurPage() !== '/'){
-          $APPLICATION->IncludeComponent(
+				<?$curPage = $APPLICATION->GetCurPage();?>
+        <?if($curPage !== '/'){
+					$APPLICATION->IncludeComponent(
           	"bitrix:breadcrumb",
           	"new",
           	Array(
@@ -93,6 +101,11 @@ IncludeTemplateLangFile(__FILE__);
           		"START_FROM" => "0"
           	)
           );
-        }?>
+					if(strpos($curPage, '/oblasti-primeneniya/') === false && strpos($curPage, '/nashi-uslugi/') === false && strpos($curPage, '/realizovannye-proekty/') === false && strpos($curPage, '/news/') === false && strpos($curPage, '/contacts/') === false){
+						?>
+							<h1><?=$APPLICATION->ShowTitle(false)?></h1>
+						<?
+					}
+				}?>
     </div>
 </header>

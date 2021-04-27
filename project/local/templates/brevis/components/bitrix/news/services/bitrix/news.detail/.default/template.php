@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 
 				<?$APPLICATION->IncludeComponent(
 					"bitrix:news.list",
-					"oblasty_list",
+					"services_list",
 					Array(
 						"ACTIVE_DATE_FORMAT" => "d.m.Y",
 						"ADD_SECTIONS_CHAIN" => "N",
@@ -75,7 +75,7 @@ $this->setFrameMode(true);
 						"ACTIVE_ELEMENT_ID" => $arResult["ID"]
 					)
 				);?>
-        <div class="pages-img-slider-oll-block">
+        <!--div class="pages-img-slider-oll-block">
             <div class="pages-img-slider-block">
                 <ul class="pages-img-slider-list row justify-content-between owl-carousel">
 									<?foreach ($arResult["PROPERTIES"]["ADD_PICTURES"]["VALUE"] as $key => $pict) {?>
@@ -88,7 +88,7 @@ $this->setFrameMode(true);
 									<?}?>
                 </div>
             </div>
-        </div>
+        </div-->
         <?/*
         <div class="pages-desc">
             <ul>

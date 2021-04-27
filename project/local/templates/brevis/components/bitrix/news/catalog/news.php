@@ -11,7 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-LocalRedirect("s-zhestkim-karniznym-uzlom5/");
+LocalRedirect("fermy-krivolineynye-s-podkosami/");
 ?>
 <section class="slide_pages-bot">
   <div class="container">
